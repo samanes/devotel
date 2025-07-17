@@ -1,9 +1,7 @@
 server:
   port: 8082
+
 spring:
-  webservices:
-    client:
-      default-uri: ${USER_SERVICE_URI:http://user-service:8081/ws}
   datasource:
     url: jdbc:h2:mem:profilesdb;DB_CLOSE_DELAY=-1
     driverClassName: org.h2.Driver
@@ -14,3 +12,7 @@ spring:
       ddl-auto: none
   liquibase:
     change-log: classpath:db/changelog/db.changelog-master.yaml
+
+soap:
+  client:
+    uri: ${USER_SERVICE_URI:http://localhost:8081/ws}

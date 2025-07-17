@@ -1,6 +1,6 @@
 version: "3.8"
-
 services:
+
   user-service:
     build:
       context: .
@@ -9,8 +9,6 @@ services:
     container_name: user-service
     ports:
       - "8081:8081"
-    networks:
-      - devotel-network
 
   profile-service:
     build:
@@ -18,13 +16,9 @@ services:
       dockerfile: profile-service/Dockerfile
     image: devotel/profile-service:latest
     container_name: profile-service
-    depends_on:
-      - user-service
     ports:
       - "8082:8082"
-    networks:
-      - devotel-network
-
-networks:
-  devotel-network:
-    driver: bridge
+    depends_on:
+      - user-service
+    environment:
+      - USER_SERVICE_URI=http://user-service:8081/ws
