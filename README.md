@@ -80,13 +80,3 @@ Liquibase changelogs are located in:
 ```
 src/main/resources/db/changelog/db.changelog-master.yaml
 ```
-
-## Git Tags
-- `v0.1.0` – Initial project setup
-- `v0.2.0` – Added Swagger/OpenAPI documentation
-- `v0.3.0` – Integrated Liquibase database migrations
-- `v0.4.0` – Improved error handling & shared exception library
-
----
-
-*Feel free to raise issues or contrib!*
