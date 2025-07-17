@@ -1,11 +1,11 @@
 package com.devotel.userservice.service;
 
-import com.devotel.userservice.dto.UserDTO;
+import com.devotel.userservice.dto.UserResponse;
 
 import java.util.List;
 
 public interface UserService {
-    UserDTO create(String name, String email);
-    UserDTO getById(Long id);
-    List<UserDTO> getAll();
+    UserResponse create(String name, String email);
+    UserResponse getById(Long id);
+    List<UserResponse> getAll();
 }

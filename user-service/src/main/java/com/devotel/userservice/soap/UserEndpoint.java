@@ -1,9 +1,9 @@
 package com.devotel.userservice.soap;
 
+import com.devotel.userservice.dto.UserResponse;
 import org.springframework.ws.server.endpoint.annotation.*;
 import lombok.RequiredArgsConstructor;
 import com.devotel.userservice.service.UserService;
-import com.devotel.userservice.dto.UserDTO;
 import com.devotel.userservice.soap.gen.GetUserByIdRequest;
 import com.devotel.userservice.soap.gen.GetUserByIdResponse;
 
@@ -16,7 +16,7 @@ public class UserEndpoint {
     @PayloadRoot(namespace = NAMESPACE, localPart = "GetUserByIdRequest")
     @ResponsePayload
     public GetUserByIdResponse getUserById(@RequestPayload GetUserByIdRequest req) {
-        UserDTO dto = userService.getById(req.getId());
+        UserResponse dto = userService.getById(req.getId());
 
         com.devotel.userservice.soap.gen.User soapUser =
                 new com.devotel.userservice.soap.gen.User();

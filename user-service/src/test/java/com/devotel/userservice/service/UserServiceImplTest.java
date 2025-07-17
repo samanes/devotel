@@ -1,8 +1,8 @@
 package com.devotel.userservice.service;
 
+import com.devotel.userservice.dto.UserResponse;
 import com.devotel.userservice.repository.UserRepository;
 import com.devotel.userservice.entity.User;
-import com.devotel.userservice.dto.UserDTO;
 import org.junit.jupiter.api.*;
 import org.mockito.*;
 import java.util.*;
@@ -25,7 +25,7 @@ class UserServiceImplTest {
         var user = new User(1L, "Alice", "a@x.com");
         when(repo.save(any())).thenReturn(user);
 
-        UserDTO dto = svc.create("Alice", "a@x.com");
+        UserResponse dto = svc.create("Alice", "a@x.com");
         assertThat(dto.id()).isEqualTo(1L);
         assertThat(dto.name()).isEqualTo("Alice");
     }
@@ -44,6 +44,6 @@ class UserServiceImplTest {
         when(repo.findAll()).thenReturn(list);
         var dtos = svc.getAll();
         assertThat(dtos).hasSize(2)
-                .extracting(UserDTO::name).containsExactly("A","B");
+                .extracting(UserResponse::name).containsExactly("A","B");
     }
 }
